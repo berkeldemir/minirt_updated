@@ -6,7 +6,7 @@
 /*   By: beldemir <beldemir@student.42istanbul.c    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/12/09 13:50:58 by beldemir          #+#    #+#             */
-/*   Updated: 2026/02/25 12:50:42 by beldemir         ###   ########.fr       */
+/*   Updated: 2026/02/25 17:47:46 by beldemir         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,8 +27,8 @@ static int	normalize_normals(void)
 	mini()->c.normal = v3_calc_normalize(mini()->c.normal);
 	while (obj != NULL)
 	{
-		((t_obj *)obj->content)->normal = \
-v3_calc_normalize(((t_obj *)obj->content)->normal);
+		((t_obj *)obj->content)->normal
+			= v3_calc_normalize(((t_obj *)obj->content)->normal);
 		obj = obj->next;
 	}
 	return (SUCCESS);
@@ -67,7 +67,6 @@ int	main(int ac, char **av)
 		quit(ERR_INITIALIZE, FAIL);
 	if (render() == FAIL)
 		quit(ERR_DRAW, FAIL);
-	else
-		put_img_to_win();
+	put_img_to_win();
 	mlx_loop(mini()->mlx.mlx);
 }

@@ -6,7 +6,7 @@
 /*   By: beldemir <beldemir@student.42istanbul.c    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/26 14:53:14 by hbayram           #+#    #+#             */
-/*   Updated: 2026/02/25 12:48:30 by beldemir         ###   ########.fr       */
+/*   Updated: 2026/02/25 18:03:56 by beldemir         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,7 +37,7 @@ static int	parse_input(char *line)
 	if (!tokens || !tokens[0])
 		return (FAIL);
 	else if (ft_strncmp(tokens[0], "#", 1) == 0)
-		return (free(tokens), printf("COMMENTLINE\n"), SUCCESS);
+		return (free_split(tokens), printf("--> COMMENTLINE <--\n"), SUCCESS);
 	else if (ft_strncmp(tokens[0], "A", 1) == 0)
 		return (parse_ambient(&tokens));
 	else if (ft_strncmp(tokens[0], "C", 1) == 0)
@@ -51,7 +51,7 @@ static int	parse_input(char *line)
 	else if (ft_strncmp(tokens[0], "cy", 2) == 0)
 		return (parse_cylinder(&tokens));
 	else
-		return (free(tokens), FAIL);
+		return (free_split(tokens), FAIL);
 	return (SUCCESS);
 }
 
@@ -78,7 +78,9 @@ int	parser(void)
 {
 	int		fd;
 	char	*line;
+	t_bool	error;
 
+	error = FALSE;
 	fd = open(mini()->file_name, O_RDONLY);
 	if (fd < 0)
 		quit(ERR_OPENFAIL, FAIL);
@@ -91,14 +93,12 @@ int	parser(void)
 		if (!line)
 			break ;
 		line = clear_line(line);
-		if (parse_input(line) == FAIL)
-			return (free(line), FAIL);
+		if (error == FALSE && parse_input(line) == FAIL)
+			error = TRUE;
 		free(line);
 	}
-	close(fd);
-	if (mini()->a.isset == FALSE
-		|| mini()->c.isset == FALSE
-		|| mini()->l.isset == FALSE)
+	if (close(fd) < 0 || error == TRUE || mini()->a.isset == FALSE
+		|| mini()->c.isset == FALSE || mini()->l.isset == FALSE)
 		return (FAIL);
 	return (state(SET, NULL), SUCCESS);
 }

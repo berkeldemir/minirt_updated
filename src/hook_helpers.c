@@ -6,7 +6,7 @@
 /*   By: beldemir <beldemir@student.42istanbul.c    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/12/09 20:07:13 by beldemir          #+#    #+#             */
-/*   Updated: 2025/12/09 20:27:36 by beldemir         ###   ########.fr       */
+/*   Updated: 2026/02/25 18:21:57 by beldemir         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,12 +32,13 @@ static void	save_file(void)
 	char	*time_str;
 	int		fd;
 
-	time_str = ft_itoa((int)get_time());
+	time_str = ft_itoa(-(int)get_time());
 	file_name = ft_strjoin(time_str, ".rt");
-	fd = open(file_name, O_CREAT | O_WRONLY);
-	ft_putstr_fd("A ", fd);
+	fd = open(file_name, O_CREAT | O_RDWR);
+	
 	printf("File saved: %s\n", file_name);
 	free(file_name);
+	close(fd);
 }
 
 int	basic_controls(int key)

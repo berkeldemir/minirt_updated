@@ -6,7 +6,7 @@
 /*   By: beldemir <beldemir@student.42istanbul.c    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/12/09 14:18:35 by beldemir          #+#    #+#             */
-/*   Updated: 2026/02/25 12:52:50 by beldemir         ###   ########.fr       */
+/*   Updated: 2026/02/25 18:02:14 by beldemir         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,14 +14,17 @@
 
 static double	solve_quad_find_t(t_quad *q)
 {
+	double	sqrt_delta;
+
 	q->delta = (q->b * q->b) - (4 * q->a * q->c);
 	if (q->delta < 0)
 		return (0);
-	q->t1 = (-(q->b) - sqrt(q->delta)) / (2.0 * q->a);
-	q->t2 = (-(q->b) + sqrt(q->delta)) / (2.0 * q->a);
-	if (q->t1 > 0.0001 && (q->t1 < q->t2 || q->t2 < 0.0001))
+	sqrt_delta = sqrt(q->delta);
+	q->t1 = (-(q->b) - sqrt_delta) / (2.0 * q->a);
+	if (q->t1 > 0.0001)
 		return (q->t1);
-	else if (q->t2 > 0.0001)
+	q->t2 = (-(q->b) + sqrt_delta) / (2.0 * q->a);
+	if (q->t2 > 0.0001)
 		return (q->t2);
 	return (0.0);
 }

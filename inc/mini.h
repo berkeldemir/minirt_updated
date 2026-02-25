@@ -6,7 +6,7 @@
 /*   By: beldemir <beldemir@student.42istanbul.c    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/12/09 14:40:25 by beldemir          #+#    #+#             */
-/*   Updated: 2026/02/25 12:09:50 by beldemir         ###   ########.fr       */
+/*   Updated: 2026/02/25 17:52:06 by beldemir         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -167,6 +167,7 @@ typedef struct s_mini
 	char		*file_name;
 	uint64_t	last_refresh;
 	int			render_res;
+	int			interrupted_render;
 	int			shadows;
 	t_bool		ctrl_hold;
 	t_ambient	a;

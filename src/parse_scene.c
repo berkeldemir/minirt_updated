@@ -6,7 +6,7 @@
 /*   By: beldemir <beldemir@student.42istanbul.c    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/26 14:58:06 by hbayram           #+#    #+#             */
-/*   Updated: 2025/12/09 19:55:46 by beldemir         ###   ########.fr       */
+/*   Updated: 2026/02/25 16:01:01 by beldemir         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,6 +15,8 @@
 int	parse_ambient(char ***tokens)
 {
 	if (mini()->a.isset == TRUE)
+		return (FAIL);
+	if (!tokens || !*tokens || !(*tokens)[1] || !(*tokens)[2])
 		return (FAIL);
 	if (rt_atod(tokens[0][1], 0.0, 1.0, &mini()->a.ratio) == FAIL)
 		return (FAIL);
@@ -28,6 +30,8 @@ int	parse_ambient(char ***tokens)
 int	parse_camera(char ***tokens)
 {
 	if (mini()->c.isset == TRUE)
+		return (FAIL);
+	if (!tokens || !*tokens || !(*tokens)[1] || !(*tokens)[2] || !(*tokens)[3])
 		return (FAIL);
 	if (rt_coords(&mini()->c.coords, tokens[0][1], FALSE) == FAIL)
 		return (FAIL);
@@ -43,6 +47,8 @@ int	parse_camera(char ***tokens)
 int	parse_light(char ***tokens)
 {
 	if (mini()->l.isset == TRUE)
+		return (FAIL);
+	if (!tokens || !*tokens || !(*tokens)[1] || !(*tokens)[2] || !(*tokens)[3])
 		return (FAIL);
 	if (rt_coords(&mini()->l.coords, tokens[0][1], FALSE) == FAIL)
 		return (FAIL);
