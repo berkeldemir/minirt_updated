@@ -6,7 +6,7 @@
 /*   By: beldemir <beldemir@student.42istanbul.c    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/12/09 14:23:06 by beldemir          #+#    #+#             */
-/*   Updated: 2026/02/25 12:49:59 by beldemir         ###   ########.fr       */
+/*   Updated: 2026/02/25 19:14:37 by beldemir         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,9 +31,9 @@ static t_vec3	rotate_util(t_vec3	vector, double angle)
 	};
 	new = v3_calc2(obj->normal, '*', cos_vector);
 	new = v3_calc2(new, '+',
-			v3_calc2(v3_calc2_cross(obj->normal, vector), '*', sin_vector));
+			v3_calc2(v3_calc2_cross(vector, obj->normal), '*', sin_vector));
 	new = v3_calc2(new, '+',
-			v3_calc2(obj->normal, '*', scalar_vector));
+			v3_calc2(vector, '*', scalar_vector));
 	return (v3_calc_normalize(new));
 }
 
@@ -45,13 +45,13 @@ static void	rotate_object(int key)
 	if (obj->type == SPHERE)
 		return ;
 	if (key == XK_Up)
-		obj->normal = rotate_util(mini()->c.up, '+');
+		obj->normal = rotate_util(mini()->c.right, ROTATE_SPEED * 1.0);
 	if (key == XK_Down)
-		obj->normal = rotate_util(mini()->c.up, '-');
+		obj->normal = rotate_util(mini()->c.right, ROTATE_SPEED * -1.0);
 	if (key == XK_Right)
-		obj->normal = rotate_util(mini()->c.right, '+');
+		obj->normal = rotate_util(mini()->c.normal, ROTATE_SPEED * 1.0);
 	if (key == XK_Left)
-		obj->normal = rotate_util(mini()->c.right, '-');
+		obj->normal = rotate_util(mini()->c.normal, ROTATE_SPEED * -1.0);
 }
 
 static void	move_util(t_vec3 vector, char mp)
@@ -101,12 +101,12 @@ int	object_moves(int key)
 	else if ((key == XK_U || key == XK_u) && (obj->diameter != -1))
 		state(GET, NULL)->diameter += RATIO;
 	else if ((key == XK_J || key == XK_j) && (obj->diameter != -1)
-		&& (obj->diameter - RATIO >= 0))
+		&& (obj->diameter >= RATIO))
 		state(GET, NULL)->diameter -= RATIO;
 	else if ((key == XK_O || key == XK_o) && (obj->height != -1))
 		state(GET, NULL)->height += RATIO;
 	else if ((key == XK_L || key == XK_l) && (obj->height != -1)
-		&& (obj->height - RATIO >= 0))
+		&& (obj->height >= RATIO))
 		state(GET, NULL)->height -= RATIO;
 	else
 		return (FAIL);

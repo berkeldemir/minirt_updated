@@ -6,7 +6,7 @@
 /*   By: beldemir <beldemir@student.42istanbul.c    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/12/09 13:58:57 by beldemir          #+#    #+#             */
-/*   Updated: 2026/02/25 13:03:25 by beldemir         ###   ########.fr       */
+/*   Updated: 2026/02/25 19:33:20 by beldemir         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,6 +43,8 @@ static t_vec3	rotate_pitch(char mp)
 	term2 = v3_calc2(mini()->c.up, '*',
 			(t_vec3){sin(angle), sin(angle), sin(angle)});
 	new_dir = v3_calc2(term1, '+', term2);
+	if (new_dir.y > 0.98 || new_dir.y < -0.98)
+		return (mini()->c.normal);
 	return (v3_calc_normalize(new_dir));
 }
 

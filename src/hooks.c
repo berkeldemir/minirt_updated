@@ -6,7 +6,7 @@
 /*   By: beldemir <beldemir@student.42istanbul.c    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/12/09 13:52:46 by beldemir          #+#    #+#             */
-/*   Updated: 2026/02/25 13:01:26 by beldemir         ###   ########.fr       */
+/*   Updated: 2026/02/25 19:12:25 by beldemir         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,14 +25,6 @@ static int	render_hook(void *null)
 		render();
 		put_img_to_win();
 	}
-	return (SUCCESS);
-}
-
-static int	key_release(int key, void *null)
-{
-	(void)null;
-	if (key == XK_Control_L || key == XK_Control_R)
-		mini()->ctrl_hold = FALSE;
 	return (SUCCESS);
 }
 
@@ -78,8 +70,6 @@ int	start_hooks(void)
 {
 	mlx_hook(
 		mini()->mlx.win, KeyPress, KeyPressMask, keyboard_ctrls, NULL);
-	mlx_hook(
-		mini()->mlx.win, KeyRelease, KeyReleaseMask, key_release, NULL);
 	mlx_hook(
 		mini()->mlx.win, ButtonPress, ButtonPressMask, mouse_ctrls, NULL);
 	mlx_hook(

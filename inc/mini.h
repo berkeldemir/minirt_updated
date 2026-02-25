@@ -6,7 +6,7 @@
 /*   By: beldemir <beldemir@student.42istanbul.c    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/12/09 14:40:25 by beldemir          #+#    #+#             */
-/*   Updated: 2026/02/25 17:52:06 by beldemir         ###   ########.fr       */
+/*   Updated: 2026/02/25 18:44:41 by beldemir         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -244,5 +244,6 @@ int			camera_moves(int key);
 
 void		put_img_to_win(void);
 int			action_log(int key, char *act, char *old, char *new);
+
 
 #endif
