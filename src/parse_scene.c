@@ -6,7 +6,7 @@
 /*   By: beldemir <beldemir@student.42istanbul.c    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/26 14:58:06 by hbayram           #+#    #+#             */
-/*   Updated: 2026/02/25 16:01:01 by beldemir         ###   ########.fr       */
+/*   Updated: 2026/02/26 16:58:21 by beldemir         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,13 +15,13 @@
 int	parse_ambient(char ***tokens)
 {
 	if (mini()->a.isset == TRUE)
-		return (FAIL);
+		return (free_split(*tokens), FAIL);
 	if (!tokens || !*tokens || !(*tokens)[1] || !(*tokens)[2])
-		return (FAIL);
+		return (free_split(*tokens), FAIL);
 	if (rt_atod(tokens[0][1], 0.0, 1.0, &mini()->a.ratio) == FAIL)
-		return (FAIL);
+		return (free_split(*tokens), FAIL);
 	if (rt_color(&mini()->a.color, tokens[0][2]) == FAIL)
-		return (FAIL);
+		return (free_split(*tokens), FAIL);
 	mini()->a.isset = TRUE;
 	free_split(*tokens);
 	return (SUCCESS);
@@ -30,15 +30,15 @@ int	parse_ambient(char ***tokens)
 int	parse_camera(char ***tokens)
 {
 	if (mini()->c.isset == TRUE)
-		return (FAIL);
+		return (free_split(*tokens), FAIL);
 	if (!tokens || !*tokens || !(*tokens)[1] || !(*tokens)[2] || !(*tokens)[3])
-		return (FAIL);
+		return (free_split(*tokens), FAIL);
 	if (rt_coords(&mini()->c.coords, tokens[0][1], FALSE) == FAIL)
-		return (FAIL);
+		return (free_split(*tokens), FAIL);
 	if (rt_coords(&mini()->c.normal, tokens[0][2], TRUE) == FAIL)
-		return (FAIL);
+		return (free_split(*tokens), FAIL);
 	if (rt_atoi(tokens[0][3], 0, 180, &mini()->c.h_degree) == FAIL)
-		return (FAIL);
+		return (free_split(*tokens), FAIL);
 	mini()->c.isset = TRUE;
 	free_split(*tokens);
 	return (SUCCESS);
@@ -47,22 +47,22 @@ int	parse_camera(char ***tokens)
 int	parse_light(char ***tokens)
 {
 	if (mini()->l.isset == TRUE)
-		return (FAIL);
+		return (free_split(*tokens), FAIL);
 	if (!tokens || !*tokens || !(*tokens)[1] || !(*tokens)[2] || !(*tokens)[3])
-		return (FAIL);
+		return (free_split(*tokens), FAIL);
 	if (rt_coords(&mini()->l.coords, tokens[0][1], FALSE) == FAIL)
-		return (FAIL);
+		return (free_split(*tokens), FAIL);
 	if (rt_atod(tokens[0][2], 0.0, 1.0, &mini()->l.brightness) == FAIL)
-		return (FAIL);
+		return (free_split(*tokens), FAIL);
 	if (tokens[0][3])
 	{
 		if (rt_color(&mini()->l.color, tokens[0][3]) == FAIL)
-			return (FAIL);
+			return (free_split(*tokens), FAIL);
 	}
 	else
 	{
 		if (rt_color(&mini()->l.color, "255,255,255") == FAIL)
-			return (FAIL);
+			return (free_split(*tokens), FAIL);
 	}
 	mini()->l.isset = TRUE;
 	free_split(*tokens);

@@ -6,7 +6,7 @@
 /*   By: beldemir <beldemir@student.42istanbul.c    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/12/09 14:24:38 by beldemir          #+#    #+#             */
-/*   Updated: 2026/02/25 16:02:23 by beldemir         ###   ########.fr       */
+/*   Updated: 2026/02/26 16:57:35 by beldemir         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,10 +18,10 @@ int	parse_sphere(char ***tokens)
 
 	printf("--> SPHERE <--\n");
 	if (!tokens || !*tokens || !(*tokens)[1] || !(*tokens)[2] || !(*tokens)[3])
-		return (FAIL);
+		return (free_split(*tokens), FAIL);
 	obj = ft_calloc(sizeof(t_obj), 1);
 	if (!obj)
-		return (FAIL);
+		return (free_split(*tokens), FAIL);
 	obj->type = SPHERE;
 	if (rt_coords(&obj->coords, tokens[0][1], FALSE) == FAIL
 		|| rt_atod(tokens[0][2], 0.0, 999999.0, &obj->diameter) == FAIL
@@ -39,10 +39,10 @@ int	parse_plane(char ***tokens)
 
 	printf("--> PLANE <--\n");
 	if (!tokens || !*tokens || !(*tokens)[1] || !(*tokens)[2] || !(*tokens)[3])
-		return (FAIL);
+		return (free_split(*tokens), FAIL);
 	obj = ft_calloc(sizeof(t_obj), 1);
 	if (!obj)
-		return (FAIL);
+		return (free_split(*tokens), FAIL);
 	obj->type = PLANE;
 	if (rt_coords(&obj->coords, tokens[0][1], FALSE) == FAIL
 		|| rt_coords(&obj->normal, tokens[0][2], TRUE) == FAIL
@@ -62,10 +62,10 @@ int	parse_cylinder(char ***tokens)
 	printf("--> CYLINDER <--\n");
 	if (!tokens || !*tokens || !(*tokens)[1] || !(*tokens)[2]
 		|| !(*tokens)[3] || !(*tokens)[4] || !(*tokens)[5])
-		return (FAIL);
+		return (free_split(*tokens), FAIL);
 	obj = ft_calloc(sizeof(t_obj), 1);
 	if (!obj)
-		return (FAIL);
+		return (free_split(*tokens), FAIL);
 	obj->type = CYLINDER;
 	if (rt_coords(&obj->coords, tokens[0][1], FALSE) == FAIL
 		|| rt_coords(&obj->normal, tokens[0][2], TRUE) == FAIL
