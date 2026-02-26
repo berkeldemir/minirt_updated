@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   intersect_cy.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: hbayram <hbayram@student.42.fr>            +#+  +:+       +#+        */
+/*   By: beldemir <beldemir@student.42istanbul.c    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/12/09 14:15:43 by beldemir          #+#    #+#             */
-/*   Updated: 2026/02/25 21:19:02 by hbayram          ###   ########.fr       */
+/*   Updated: 2026/02/26 15:53:09 by beldemir         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -51,7 +51,7 @@ static void	check_cap(t_ray *ray, t_obj *obj, t_hit *best_hit, t_vec3 cap[2])
 	}
 }
 
-void	helper(t_ray *ray, t_obj *obj, t_quad *q)
+static void	helper(t_ray *ray, t_obj *obj, t_quad *q)
 {
 	t_vec3	oc;
 	t_vec3	cross_d_n;
@@ -97,8 +97,8 @@ void	intersect_cylinder_body(t_ray *ray, t_obj *obj, t_hit *best_hit,
 	best_hit->normal = v3_calc_normalize(v3_calc2(v3_calc2(best_hit->point, '-',
 					obj->coords), '-', axis_component));
 	if (v3_calc2_dotprod(ray->direction, best_hit->normal) > 0)
-		best_hit->normal = v3_calc2(best_hit->normal, '*', (t_vec3){-1, -1,
-				-1});
+		best_hit->normal = v3_calc2(best_hit->normal, '*',
+				(t_vec3){-1, -1, -1});
 }
 
 void	intersect_cylinder(t_ray *ray, t_obj *obj, t_hit *best_hit)
