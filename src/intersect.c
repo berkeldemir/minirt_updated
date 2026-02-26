@@ -6,7 +6,7 @@
 /*   By: beldemir <beldemir@student.42istanbul.c    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/12/09 14:18:35 by beldemir          #+#    #+#             */
-/*   Updated: 2026/02/25 18:02:14 by beldemir         ###   ########.fr       */
+/*   Updated: 2026/02/26 13:22:40 by beldemir         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -71,7 +71,7 @@ void	intersect_plane(t_ray *ray, t_obj *obj, t_hit *best_hit)
 		best_hit->obj = obj;
 		best_hit->point = v3_calc2(ray->origin, '+',
 				v3_calc2(ray->direction, '*', (t_vec3){t, t, t}));
-		if (b <= 0.0001)
+		if (b > 0.0001)
 			best_hit->normal
 				= v3_calc2(obj->normal, '*', (t_vec3){-1.0, -1.0, -1.0});
 		else
