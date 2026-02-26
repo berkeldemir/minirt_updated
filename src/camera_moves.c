@@ -6,7 +6,7 @@
 /*   By: beldemir <beldemir@student.42istanbul.c    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/12/09 13:58:57 by beldemir          #+#    #+#             */
-/*   Updated: 2026/02/25 19:33:20 by beldemir         ###   ########.fr       */
+/*   Updated: 2026/02/26 14:20:55 by beldemir         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -53,11 +53,11 @@ static void	rotate_camera(int key)
 	if (key == XK_Up)
 		mini()->c.normal = rotate_pitch('+');
 	if (key == XK_Left)
-		mini()->c.normal = rotate_yaw('-');
+		mini()->c.normal = rotate_yaw('+');
 	if (key == XK_Down)
 		mini()->c.normal = rotate_pitch('-');
 	if (key == XK_Right)
-		mini()->c.normal = rotate_yaw('+');
+		mini()->c.normal = rotate_yaw('-');
 }
 
 static void	move_camera(int key)

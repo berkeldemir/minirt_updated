@@ -6,7 +6,7 @@
 /*   By: beldemir <beldemir@student.42istanbul.c    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/12/09 14:27:52 by beldemir          #+#    #+#             */
-/*   Updated: 2026/02/25 12:49:13 by beldemir         ###   ########.fr       */
+/*   Updated: 2026/02/26 14:23:14 by beldemir         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,8 +37,8 @@ void	setup_camera_basis_and_viewport(void)
 		w_up = v3_new(0.0, 0.0, 1.0);
 	else
 		w_up = v3_new(0.0, 1.0, 0.0);
-	c->right = v3_calc_normalize(v3_calc2_cross(w_up, c->fwd));
-	c->up = v3_calc_normalize(v3_calc2_cross(c->fwd, c->right));
+	c->right = v3_calc_normalize(v3_calc2_cross(c->fwd, w_up));
+	c->up = v3_calc_normalize(v3_calc2_cross(c->right, c->fwd));
 	h_degree_radiant = mini()->c.h_degree * (3.1415 / 180.0) / 2.0;
 	mini()->c.viewport.y = 2.0 * tan(h_degree_radiant);
 	mini()->c.viewport.x = mini()->c.viewport.y * (WD / HD);

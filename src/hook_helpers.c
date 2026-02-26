@@ -6,7 +6,7 @@
 /*   By: beldemir <beldemir@student.42istanbul.c    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/12/09 20:07:13 by beldemir          #+#    #+#             */
-/*   Updated: 2026/02/25 19:08:25 by beldemir         ###   ########.fr       */
+/*   Updated: 2026/02/26 14:09:58 by beldemir         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,7 +24,10 @@ int	basic_controls(int key)
 	if (key == XK_Escape || key == XK_Q || key == XK_q)
 		quit(MSG_OK, SUCCESS);
 	else if (key == XK_R || key == XK_r)
-		(ft_lstclear(&mini()->objs, free), parser(), render());
+	{
+		(ft_lstclear(&mini()->objs, free), parser());
+		(render(), put_img_to_win());
+	}
 	else if ((key == XK_X || key == XK_x) && mini()->shadows == ON)
 		mini()->shadows = OFF;
 	else if ((key == XK_X || key == XK_x) && mini()->shadows == OFF)
