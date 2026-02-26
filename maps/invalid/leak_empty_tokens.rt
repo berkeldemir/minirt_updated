@@ -1,0 +1,19 @@
+# TEST: Memory Leak - Empty or Invalid Tokens
+# PROBLEM: ft_split boş array döndürebilir veya parse_input FAIL dönüp tokens free etmeyebilir
+# EXPECTED: Tüm tokens düzgün free edilmeli
+
+A 0.2 255,255,255
+C 0,0,20 0,0,-1 70
+L -40,50,0 0.6 0,0,0
+
+# Sadece boşluklar
+    
+
+# Geçersiz identifier
+INVALID 0,0,0 10 255,0,0
+
+# Başka geçersiz format
+XX 1,2,3 4 5,6,7
+
+sp 0,0,0 10 100,100,100
+
