@@ -6,7 +6,7 @@
 /*   By: beldemir <beldemir@student.42istanbul.c    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/12/09 13:52:46 by beldemir          #+#    #+#             */
-/*   Updated: 2026/02/25 19:12:25 by beldemir         ###   ########.fr       */
+/*   Updated: 2026/02/26 18:11:11 by beldemir         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,6 +36,11 @@ static int	keyboard_ctrls(int key, void *null)
 	else if (state(GET, NULL) == NULL)
 	{
 		if (camera_moves(key) == FAIL)
+			return (FAIL);
+	}
+	else if (state(GET, NULL) == (t_obj *)FOCUS_LIGHT)
+	{
+		if (light_moves(key) == FAIL)
 			return (FAIL);
 	}
 	else

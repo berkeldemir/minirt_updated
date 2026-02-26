@@ -6,7 +6,7 @@
 /*   By: beldemir <beldemir@student.42istanbul.c    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/26 14:53:14 by hbayram           #+#    #+#             */
-/*   Updated: 2026/02/26 16:57:26 by beldemir         ###   ########.fr       */
+/*   Updated: 2026/02/26 17:58:22 by beldemir         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,7 +37,7 @@ static int	parse_input(char *line)
 	if (!tokens || !tokens[0])
 		return (FAIL);
 	else if (ft_strncmp(tokens[0], "#", 1) == 0)
-		return (free_split(tokens), printf("--> COMMENTLINE <--\n"), SUCCESS);
+		return (free_split(tokens), SUCCESS);
 	else if (ft_strncmp(tokens[0], "A", 1) == 0)
 		return (parse_ambient(&tokens));
 	else if (ft_strncmp(tokens[0], "C", 1) == 0)

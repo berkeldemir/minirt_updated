@@ -6,7 +6,7 @@
 /*   By: beldemir <beldemir@student.42istanbul.c    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/12/09 13:56:49 by beldemir          #+#    #+#             */
-/*   Updated: 2026/02/25 12:34:39 by beldemir         ###   ########.fr       */
+/*   Updated: 2026/02/26 17:55:56 by beldemir         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,13 +40,7 @@ t_obj	*state(char getset, t_obj *obj)
 	if (getset == GET)
 		return (current_state);
 	else if (getset == SET)
-	{
-		current_state = obj;
-		if (obj == NULL)
-			printf("STATE UPDATED: NULL\n");
-		else
-			printf("STATE UPDATED: %c\n", obj->type);
-	}
+		current_state = (void *)obj;
 	return (NULL);
 }
 

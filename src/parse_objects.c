@@ -6,7 +6,7 @@
 /*   By: beldemir <beldemir@student.42istanbul.c    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/12/09 14:24:38 by beldemir          #+#    #+#             */
-/*   Updated: 2026/02/26 16:57:35 by beldemir         ###   ########.fr       */
+/*   Updated: 2026/02/26 17:58:15 by beldemir         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,7 +16,6 @@ int	parse_sphere(char ***tokens)
 {
 	t_obj	*obj;
 
-	printf("--> SPHERE <--\n");
 	if (!tokens || !*tokens || !(*tokens)[1] || !(*tokens)[2] || !(*tokens)[3])
 		return (free_split(*tokens), FAIL);
 	obj = ft_calloc(sizeof(t_obj), 1);
@@ -37,7 +36,6 @@ int	parse_plane(char ***tokens)
 {
 	t_obj	*obj;
 
-	printf("--> PLANE <--\n");
 	if (!tokens || !*tokens || !(*tokens)[1] || !(*tokens)[2] || !(*tokens)[3])
 		return (free_split(*tokens), FAIL);
 	obj = ft_calloc(sizeof(t_obj), 1);
@@ -59,7 +57,6 @@ int	parse_cylinder(char ***tokens)
 {
 	t_obj	*obj;
 
-	printf("--> CYLINDER <--\n");
 	if (!tokens || !*tokens || !(*tokens)[1] || !(*tokens)[2]
 		|| !(*tokens)[3] || !(*tokens)[4] || !(*tokens)[5])
 		return (free_split(*tokens), FAIL);

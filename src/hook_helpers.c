@@ -6,7 +6,7 @@
 /*   By: beldemir <beldemir@student.42istanbul.c    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/12/09 20:07:13 by beldemir          #+#    #+#             */
-/*   Updated: 2026/02/26 14:09:58 by beldemir         ###   ########.fr       */
+/*   Updated: 2026/02/26 18:10:50 by beldemir         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,6 +34,8 @@ int	basic_controls(int key)
 		mini()->shadows = ON;
 	else if (key == XK_C || key == XK_c)
 		return (state(SET, NULL), TRUE);
+	else if (key == XK_L || key == XK_l)
+		return (state(SET, (t_obj *)FOCUS_LIGHT), TRUE);
 	else
 		return (FALSE);
 	return (TRUE);

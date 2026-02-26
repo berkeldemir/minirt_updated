@@ -6,7 +6,7 @@
 /*   By: beldemir <beldemir@student.42istanbul.c    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/12/09 13:50:58 by beldemir          #+#    #+#             */
-/*   Updated: 2026/02/25 17:47:46 by beldemir         ###   ########.fr       */
+/*   Updated: 2026/02/26 17:58:09 by beldemir         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -51,7 +51,6 @@ static int	initializer(void)
 	m->shadows = ON;
 	if (start_hooks() == FAIL)
 		return (FAIL);
-	printf("%s\n", mini()->file_name);
 	return (SUCCESS);
 }
 

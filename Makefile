@@ -21,6 +21,7 @@ SRCS       = $(GNLFILES) \
 			./src/hooks.c \
 			./src/intersect_cy.c \
 			./src/intersect.c \
+			./src/light_moves.c \
 			./src/lights.c \
 			./src/object_moves.c \
 			./src/parse_objects.c \

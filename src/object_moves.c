@@ -6,7 +6,7 @@
 /*   By: beldemir <beldemir@student.42istanbul.c    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/12/09 14:23:06 by beldemir          #+#    #+#             */
-/*   Updated: 2026/02/25 19:14:37 by beldemir         ###   ########.fr       */
+/*   Updated: 2026/02/26 18:06:30 by beldemir         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -103,9 +103,9 @@ int	object_moves(int key)
 	else if ((key == XK_J || key == XK_j) && (obj->diameter != -1)
 		&& (obj->diameter >= RATIO))
 		state(GET, NULL)->diameter -= RATIO;
-	else if ((key == XK_O || key == XK_o) && (obj->height != -1))
+	else if ((key == XK_Y || key == XK_y) && (obj->height != -1))
 		state(GET, NULL)->height += RATIO;
-	else if ((key == XK_L || key == XK_l) && (obj->height != -1)
+	else if ((key == XK_H || key == XK_h) && (obj->height != -1)
 		&& (obj->height >= RATIO))
 		state(GET, NULL)->height -= RATIO;
 	else

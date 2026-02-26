@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   mini.h                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: hbayram <hbayram@student.42.fr>            +#+  +:+       +#+        */
+/*   By: beldemir <beldemir@student.42istanbul.c    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/12/09 14:40:25 by beldemir          #+#    #+#             */
-/*   Updated: 2026/02/25 21:10:40 by hbayram          ###   ########.fr       */
+/*   Updated: 2026/02/26 18:15:37 by beldemir         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,6 +26,8 @@
 # include "./mlx/mlx.h"
 # include "./libft/include/libft.h"
 
+typedef struct s_obj	t_obj;
+
 # define FAIL 1
 # define SUCCESS 0
 
@@ -34,6 +36,8 @@
 
 # define ON 1
 # define OFF 0
+
+# define FOCUS_LIGHT -1
 
 # define HIGH_RES 1
 # define LOW_RES 3
@@ -242,8 +246,10 @@ uint32_t	apply_light(t_hit hit);
 // camera_moves.c
 int			camera_moves(int key);
 
+// main.c
 void		put_img_to_win(void);
-int			action_log(int key, char *act, char *old, char *new);
 
+// light_moves.c
+int			light_moves(int key);
 
 #endif
