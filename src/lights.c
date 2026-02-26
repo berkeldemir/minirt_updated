@@ -6,7 +6,7 @@
 /*   By: beldemir <beldemir@student.42istanbul.c    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/12/09 14:20:54 by beldemir          #+#    #+#             */
-/*   Updated: 2026/02/26 13:20:25 by beldemir         ###   ########.fr       */
+/*   Updated: 2026/02/26 13:42:44 by beldemir         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,27 +40,21 @@ static int	is_in_shadow(t_hit hit)
 	return (FALSE);
 }
 
-static t_color  get_final_color(t_color color, double intensity)
+static t_color	get_final_color(t_color color, double intensity)
 {
-    t_color res;
-    double  ambient_r;
-    double  ambient_g;
-    double  ambient_b;
+	t_color	res;
+	double	ambient_r;
+	double	ambient_g;
+	double	ambient_b;
 
-    // Calculate ambient factors
-    ambient_r = mini()->a.ratio * (mini()->a.color.r / 255.0);
-    ambient_g = mini()->a.ratio * (mini()->a.color.g / 255.0);
-    ambient_b = mini()->a.ratio * (mini()->a.color.b / 255.0);
-
-    // Apply object color * (diffuse + ambient)
-    res.r = compress(color.r * (intensity + ambient_r));
-    res.g = compress(color.g * (intensity + ambient_g));
-    res.b = compress(color.b * (intensity + ambient_b));
-
-    // CRITICAL FIX: Pack the bits into the value integer
-    res.value = ((int)res.r << 16) | ((int)res.g << 8) | (int)res.b;
-
-    return (res);
+	ambient_r = mini()->a.ratio * (mini()->a.color.r / 255.0);
+	ambient_g = mini()->a.ratio * (mini()->a.color.g / 255.0);
+	ambient_b = mini()->a.ratio * (mini()->a.color.b / 255.0);
+	res.r = compress(color.r * (intensity + ambient_r));
+	res.g = compress(color.g * (intensity + ambient_g));
+	res.b = compress(color.b * (intensity + ambient_b));
+	res.value = ((int)res.r << 16) | ((int)res.g << 8) | (int)res.b;
+	return (res);
 }
 
 uint32_t	apply_light(t_hit hit)
